@@ -1,10 +1,12 @@
 package com.poc.json;
 
+import com.poc.json.console.ConsoleMenu;
 import com.poc.json.jackson.JacksonJsonService;
 import com.poc.json.model.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.TestPropertySource;
 
 import java.io.File;
@@ -14,8 +16,14 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
-@TestPropertySource(properties = "json.output.dir=./output-test")
+@TestPropertySource(properties = {
+    "json.output.dir=./output-test",
+    "json.data.file=./output-test/users.json"
+})
 class JacksonJsonServiceTest {
+
+    @MockBean
+    ConsoleMenu consoleMenu;
 
     @Autowired
     JacksonJsonService service;
