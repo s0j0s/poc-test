@@ -6,6 +6,7 @@ build/
 # Output directories
 output/
 output-test/
+data/
 
 # IntelliJ IDEA
 .idea/
